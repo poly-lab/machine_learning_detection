@@ -1,6 +1,8 @@
 import pefile as pefile
 
 __author__ = 'admin'
+import django
 
-pe=pefile
-pe.
+print django.VERSION
+
+

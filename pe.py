@@ -19,42 +19,20 @@ def get_pe_sha256(PATH):
     BUFSIZE = 1024*1024
     buf = f.read(BUFSIZE)
     sha256=hashlib.sha256(buf).hexdigest()
-    return sha256
+    print sha256
+    get_pe_imports(PATH)
     a=open("sha256","a")
-    a.write(sha256+"\r\n")
+    a.write(sha256+"\n")
     a.close()
-def get_path(ROOTPATH,FlagStr=[]):
-    FILEPATH=os.path.join(ROOTPATH,"pefile")
-    FileList=[]
-    FileNames=os.listdir(FILEPATH)
-    if (len(FileNames)>0):
-       for fn in FileNames:
-           if (len(FlagStr)>0):
-
-               if (IsSubString(FlagStr,fn)):
-                   fullfilename=os.path.join(FILEPATH,fn)
-                   FileList.append(fullfilename)
-           else:
-
-               fullfilename=os.path.join(FILEPATH,fn)
-               FileList.append(fullfilename)
-
-
-    if (len(FileList)>0):
-        FileList.sort()
-    return FileList
-def IsSubString(SubStrList,Str):
-    flag=True
-    for substr in SubStrList:
-        if not(substr in Str):
-            flag=False
-
-    return flag
+def get_path(ROOTPATH):
+    pefiles=os.path.join(ROOTPATH,"pefiles")
+    for root ,dirs,files in os.walk(pefiles):
+        for file in files:
+            filepa=os.path.join(root,file)
+            print filepa
+            get_pe_sha256(filepa)
 
 if __name__=="__main__":
-    filelist=get_path(ROOTPATH)
-    pool=Pool(processes=10)
-    pool.map(get_pe_sha256,filelist)
-    pool.close()
-    pool.join()
+   get_path(ROOTPATH)
+
 

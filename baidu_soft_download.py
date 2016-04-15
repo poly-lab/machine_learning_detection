@@ -12,7 +12,7 @@ import MySQLdb
 
 def baidu_main(i):
     website='baidu'
-    url='http://rj.baidu.com/soft/lists/'+str(i)
+    url='http://rj.baidu.com/soft/lists/'+str(i)+'/2'
     sorts=['聊天通讯','输入法','浏览器','下载工具','影视播放','音乐播放','图像编辑','杀毒防护','压缩刻录','系统工具','驱动程序','办公学习','程序开发','股票网银','影音编辑','游戏','手机管理','桌面壁纸','网络应用']
     r=requests.get(url)
     soup=BeautifulSoup(r.text,"html.parser")

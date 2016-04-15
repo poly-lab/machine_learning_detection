@@ -8,6 +8,7 @@ import pefile
 from lib.core.constants import ROOTPATH
 def get_pe_imports(PATH):
     pe=pefile.PE(PATH)
+    print pe.sections
     for entry in pe.DIRECTORY_ENTRY_IMPORT:
         dll=entry.dll
         print dll
@@ -29,15 +30,22 @@ def get_pe_md5(PATH):
         md5obj = hashlib.md5()
         md5obj.update(f.read())
         hash = md5obj.hexdigest()
-        print(hash)
-        return hash
+        a=open("md5","a")
+        a.write(hash+"\n")
+        a.close()
 def get_path(ROOTPATH):
     pefiles=os.path.join(ROOTPATH,"pefiles")
     for root ,dirs,files in os.walk(pefiles):
         for file in files:
             filepa=os.path.join(root,file)
             print filepa
-            get_pe_sha256(filepa)
+            try:
+                get_pe_sha256(filepa)
+                get_pe_md5(filepa)
+            except Exception as e:
+                print e
+                pass
+
 
 if __name__=="__main__":
    get_path(ROOTPATH)

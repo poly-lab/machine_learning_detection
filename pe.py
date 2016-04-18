@@ -16,14 +16,17 @@ def get_pe_imports(PATH):
             print "\t",imp.name
 
 def get_pe_sha256(PATH):
+
     f = open(PATH, "rb")
     BUFSIZE = 1024*1024
     buf = f.read(BUFSIZE)
     sha256=hashlib.sha256(buf).hexdigest()
     print sha256
-    get_pe_imports(PATH)
+    #get_pe_imports(PATH)
+
     a=open("sha256","a")
-    a.write(sha256+"\n")
+    a.write(sha256+"\n" )
+    a.write(PATH+"\n")
     a.close()
 def get_pe_md5(PATH):
     with open(PATH,'rb') as f:
@@ -41,7 +44,7 @@ def get_path(ROOTPATH):
             print filepa
             try:
                 get_pe_sha256(filepa)
-                get_pe_md5(filepa)
+                #get_pe_md5(filepa)
             except Exception as e:
                 print e
                 pass

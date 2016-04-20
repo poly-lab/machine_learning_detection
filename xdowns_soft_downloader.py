@@ -107,9 +107,10 @@ def database(website,title,category_name,soft_page_url,soft_size,downsite,soft_d
     db= MySQLdb.connect(db="malware_info", user="root", passwd="polydata", host="localhost", port=3306,charset='utf8')
 
     cursor = db.cursor()
-    insert_sql='insert into lvmeng_soft_info(Soft_Name,Soft_From,Soft_Sort,Soft_detail_url,Soft_Size,Soft_down_site,Soft_Url) VALUES ' \
-               '("%s","%s","%s","%s","%s","%s","%s") '%(title.encode("utf-8"),website,category_name.encode("utf-8"),str(soft_page_url),str(soft_size),downsite.encode("utf-8"),soft_down_url.encode("utf-8"))
     try:
+        insert_sql='insert into lvmeng_soft_info(Soft_Name,Soft_From,Soft_Sort,Soft_detail_url,Soft_Size,Soft_down_site,Soft_Url) VALUES ' \
+               '("%s","%s","%s","%s","%s","%s","%s") '%(title.encode("utf-8"),website,category_name.encode("utf-8"),str(soft_page_url),str(soft_size),downsite.encode("utf-8"),soft_down_url.encode("utf-8"))
+
         cursor.execute(insert_sql)
         db.commit()
         cursor.close()
@@ -119,7 +120,7 @@ def database(website,title,category_name,soft_page_url,soft_size,downsite,soft_d
         cursor.close()
         db.close()
         print e
-        exit()
+        pass 
 
 
 if __name__=="__main__":

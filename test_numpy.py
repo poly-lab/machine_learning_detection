@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
+import json
 import numpy as np
 import matplotlib.pyplot as plt
+a=open('json/10.txt',"r").read().replace('"',"'")
+print type(a)
+a=eval(a)
+print type(a)
+print a
+dict = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+print dict['Name']
+print a['1']
 '''
 x = np.linspace(0, 10, 1000)
 y = np.cos(x)

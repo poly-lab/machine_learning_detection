@@ -10,7 +10,7 @@ import MySQLdb
 import sys
 
 __author__ = 'liebesu'
-website='绿盟'
+website='lvmeng5v15'
 url='http://www.xdowns.com/support/sitemap.asp'
 def get_class():
     #从地图获取板块链接
@@ -61,7 +61,7 @@ def get_main(category):
                     soft_run=[soft_det_string for soft_det_string in soft_det.stripped_strings][-1]
                     soft_size=[soft_det_string for soft_det_string in soft_det.stripped_strings][3]
                     if "Win" in str(soft_run):
-                        if "KB" in soft_size or ( "MB" in soft_size and filter(str.isdigit,str(soft_size))<5):
+                        if "MB" in soft_size and 15>filter(str.isdigit,str(soft_size))>5:
                             soft_idnum=filter(str.isdigit,os.path.basename(soft_page_url.encode('utf-8')))
                             soft_down_r=requests.get('http://www.xdowns.com/soft/softdownnew.asp?softid='+soft_idnum)
                             soup_soft=BeautifulSoup(soft_down_r.content,"html.parser")

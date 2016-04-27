@@ -10,7 +10,7 @@ def open_get(path):
     a=eval(a)
     trim(a)
 def trim(a):
-    ids=[]
+
     for id in a:
 
         for whiteiteme in a[id]['white'].keys():
@@ -26,6 +26,7 @@ def trim(a):
         worm_percent_list=[]
         square_percent_list=[]
         nums=[]
+        ids=[]
         for sig_inter_key in inter_keys:
 
             all_white_valus=0
@@ -50,7 +51,7 @@ def trim(a):
                     worm_percent=1-(worm_values/all_worm_valus)
 
 
-            ids.append(id)
+                    ids.append(id)
             nums.append(sig_inter_key)
             square=(worm_percent*worm_percent)+(white_percent*white_percent)
             square_percent_list.append(square)
@@ -82,10 +83,10 @@ def trim(a):
         plt.title("PE Detection Rate")
         plt.xlabel('White_percent')
         plt.ylabel('Malware_percent')    #为y轴加注释'''
-    print ids,nums,square_percent_list
-    fig = plt.figure()
-    ax = Axes3D(fig)
-    ax.plot_surface(ids, nums, square_percent_list, rstride=1, cstride=1,cmap='rainbow')
+        print ids,nums,square_percent_list
+        fig = plt.figure()
+        ax = Axes3D(fig)
+        ax.plot_surface(ids, nums, square_percent_list, rstride=1, cstride=1,cmap='rainbow')
     plt.show()
     #print max(white_percent_list)
     #print max(worm_percent_list)

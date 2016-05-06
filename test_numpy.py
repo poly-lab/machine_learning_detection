@@ -164,5 +164,5 @@ def get_dec(a):
         plt.show()
 
 if __name__ == "__main__" :
-    result_path="json/198.txt"
+    result_path="json/23.txt"
     open_get(result_path)

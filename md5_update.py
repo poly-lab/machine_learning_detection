@@ -23,6 +23,10 @@ def malshare():
             filepath=os.path.join(os.getcwd(),"malshare")
             print filepath
             urllib.urlretrieve(relurl,os.path.join(filepath,link.get('href')))
+def virusshare():
+    url='https://virusshare.com/hashes/'
+    r=requests.get(url)
+    r.content
 
 def check_md5():
      mysql

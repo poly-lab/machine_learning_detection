@@ -20,7 +20,10 @@ for filename in iterfindfiles(r"/data2/samples/kaspersky/", "*.vir"):
         error_file.close()
         
     if b:
-        pass
+        have_result=open("result.txt",'a')
+        have_result.write(filename+"\n")
+        have_result.write(str(b)+"\n")
+        have_result.close()
     else:
         no_result=open("no_result.txt",'a')
         no_result.write(filename+"\n")
